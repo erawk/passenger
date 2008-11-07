@@ -994,7 +994,9 @@ init_module(apr_pool_t *pconf, apr_pool_t *plog, apr_pool_t *ptemp, server_rec *
 	 */
 	if (hooks != NULL) {
 		P_DEBUG("Restarting Phusion Passenger....");
+		#ifndef __APPLE__
 		delete hooks;
+		#endif
 	}
 	try {
 		hooks = new Hooks(pconf, plog, ptemp, s);
